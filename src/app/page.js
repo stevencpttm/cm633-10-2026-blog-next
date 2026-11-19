@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default async function HomePage() {
   const posts = await prisma.post.findMany({
-    // include: {
-    //   comments: true,
-    // },
+    include: {
+      comments: true,
+    },
   });
 
   return (
@@ -22,6 +22,7 @@ export default async function HomePage() {
             >
               <h4 className="text-lg font-bold py-1 px-4">{post.title}</h4>
               <p className="p-4 bg-slate-200">{post.content}</p>
+              <div>{JSON.stringify(post.comments)}</div>
             </li>
           );
         })}
