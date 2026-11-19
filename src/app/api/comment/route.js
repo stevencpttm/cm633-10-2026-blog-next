@@ -4,9 +4,12 @@ export async function POST(request) {
   const body = await request.json();
 
   if (!body.postId || !body.content) {
-    return Response.json({
-      success: false,
-    });
+    return Response.json(
+      { error: "postId or content does not exist." },
+      {
+        status: 400,
+      },
+    );
   }
 
   const comment = await prisma.comment.create({
