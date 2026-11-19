@@ -1,10 +1,12 @@
+import { createPost } from "./actions";
+
 export default function () {
   return (
     <div className="p-4">
       <h2 className="text-3xl border-b border-slate-300 pb-4 mb-4">
         Create Post
       </h2>
-      <form>
+      <form action={createPost}>
         <label className="block border-b border-slate-200 pb-4 mb-4">
           <strong>Title</strong>
           <input
