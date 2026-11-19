@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import CommentArea from "@/component/CommentArea";
 
 export default async function HomePage() {
   const posts = await prisma.post.findMany({
@@ -22,7 +23,7 @@ export default async function HomePage() {
             >
               <h4 className="text-lg font-bold py-1 px-4">{post.title}</h4>
               <p className="p-4 bg-slate-200">{post.content}</p>
-              <div>{JSON.stringify(post.comments)}</div>
+              <CommentArea post={post} />
             </li>
           );
         })}
